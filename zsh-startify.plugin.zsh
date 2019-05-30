@@ -160,6 +160,7 @@ function @zsh-sify-register-plugin() {
 autoload -Uz add-zsh-hook
 add-zsh-hook preexec @zsh-startify-tracking-hook
 
+unfunction __from-zhistory-accumulate 2>/dev/null
 autoload zaccu-process-buffer zsh-startify __from-zhistory-accumulate
 
 #
