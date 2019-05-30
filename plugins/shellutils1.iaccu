@@ -184,15 +184,15 @@
 
             reply=()
 
-            # Truncate to 35 characters, right-pad to 40 characters
+            # Truncate to 45 characters, right-pad to 50 characters
             # Quoting is kept so that (z) flags will correctly split
             # (in the selection list, things there are done via z flag)
             #
             # Also, quote % so that prompt expansion doesn't interfere
             local txtfile="${file//\%/%%}"
-            txtfile='%35<...<'"$txtfile"
+            txtfile='%45<...<'"$txtfile"
             txtfile="$ZSIFY_YELLOW1${(%)txtfile}$ZSIFY_RST"
-            txtfile="${(r:40:: :)txtfile}"
+            txtfile="${(r:50:: :)txtfile}"
 
             ZSHSIFY_OUTPUT_DOCUMENT_SECTIONS[shellutils]+=$'\t'"$txtfile"
 
