@@ -1,3 +1,15 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [zsh-startify](#zsh-startify)
+- [Screenshots](#screenshots)
+- [Installation](#installation)
+  - [Any plugin manager](#any-plugin-manager)
+  - [Zplugin](#zplugin)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # zsh-startify
 
 A plugin that aims at providing what
@@ -16,10 +28,46 @@ zsh-startify:
    with a `Makefile`, a `CMakeLists.txt`, a `configure` script, etc. – a very advanced
    feature, inherited from `zsh-startify`'s predecessor: `psprint/zaccumulator` plugin),
  - will show recently ran `git` commands, with analysis of e.g. recently checked-out
-   branches.
+   branches,
+ - will cooperate with any bookmarking plugins to show their bookmarks.
 
 # Screenshots
 
+![zsh-startify](https://raw.githubusercontent.com/zdharma/zsh-startify/img/zsh-startify.png)
+
+# Installation
+
+## Any plugin manager
+
+Issue the regular loading command of your plugin manager, pointing it to
+`zdharma/zsh-startify`. Then, add invocation of `zsh-startify` to the end of
+`~/.zshrc`:
+
+
+```zsh
+% tail -n 5 ~/.zshrc                (git)-[master●]
+#zmodload -i zsh/sched
+#schedprompt
+
+# ADD TO ~/.zshrc
+zsh-startify
+```
+
+## [Zplugin](https://github.com/zdharma/zplugin)
+
+```zsh
+# Option A – normal load without Turbo-Mode
+zplugin ice atload'zsh-startify'
+zplugin load zdharma/zsh-startify
+
+# Option B – a load with Turbo-Mode being in use
+zplugin ice wait'0' lucid atload'zsh-startify'
+zplugin load zdharma/zsh-startify
+```
+
+The first option (A) loads the plugin synchronously, at the time of execution of the
+`zplugin load ...` command. The second option (B) loads in an asynchronous manner, 0
+seconds after the prompt being first displayed.
 
 <!-- vim:tw=87
 -->
