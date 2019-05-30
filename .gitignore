@@ -1,3 +1,6 @@
+### Zsh
+*.zwc
+._zplugin
 
 ### Vim
 # Swap
