@@ -5,9 +5,8 @@
 # generator creates command arrays and it's the final generator that makes use
 # of this accumulated data and constructs document.
 
-# Plugin functions are run from "zsh-startify" function, which has
-# emulate -LR zsh, setopt extendedglob. Other code is executed
-# in unknown environment
+# Plugin functions are run from "zsh-startify" function, which has emulate -LR
+# zsh, setopt extendedglob. Other code is executed in unknown environment
 
 # This is implementation file - there's no registration here
 
@@ -27,7 +26,7 @@
     ### Size - max number of entries in generated section
 
     local size
-    zstyle -s ":accumulator:shellutils" size size || size="5"
+    zstyle -s ":plugin:zsh-startify:shellutils" size size || size="5"
 
     # We run from accumulator, extendedglob is set
     # <-> is: positive number, including 0
@@ -38,7 +37,7 @@
     ### Keep going - try `keep_going`-times to add command to any existing entry, after reaching max # of entries
 
     local keep_going
-    zstyle -s ":accumulator:shellutils" keep_going keep_going || keep_going="100"
+    zstyle -s ":plugin:zsh-startify:shellutils" keep_going keep_going || keep_going="100"
 
     [[ "$keep_going" != <-> ]] && keep_going="100"
 
@@ -47,12 +46,12 @@
     ### Backup dir
 
     local backup_dir
-    zstyle -s ":accumulator:shellutils" backup_dir backup_dir || backup_dir="~/.backup"
+    zstyle -s ":plugin:zsh-startify:shellutils" backup_dir backup_dir || backup_dir="~/.backup"
     ZSHSIFY_CONFIG[shellutils_backupdir]="$backup_dir"
 
     ### Sort order
     local sort_order
-    zstyle -s ":accumulator:shellutils" sort_order sort_order || sort_order="recent_first"
+    zstyle -s ":plugin:zsh-startify:shellutils" sort_order sort_order || sort_order="recent_first"
     ZSHSIFY_CONFIG[shellutils_sort_order]="$sort_order"
 }
 

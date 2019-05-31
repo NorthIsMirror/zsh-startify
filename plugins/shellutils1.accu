@@ -1,19 +1,20 @@
-# Accumulator plugin for various shell utils. Commands like
-# "cp ~/.zshrc ~/.zshrc2" are routed to specified generator
-# function.
+# zsh-startify plugin for various shell utils. Commands like "vim ~/.zshrc" are
+# routed to specified generator function. Typical main generator creates text
+# with hyperlinks and appends the text to $SECTIONNAME of choice in
+# ZSHSIFY_OUTPUT_DOCUMENT_SECTIONS[$SECTIONNAME] (global hash). Here, main
+# generator creates command arrays and it's the final generator that makes use
+# of this accumulated data and constructs document.
 
-# Plugin functions are run from "accumulator" function, which has
-# emulate -LR zsh, setopt extendedglob. Other code is executed
-# in unknown environment
+# Plugin functions are run from "zsh-startify" function, which has emulate -LR
+# zsh, setopt extendedglob. Other code is executed in unknown environment
 
-# This file just registers plugin, doesn't provide implementation
-# - this is done to speed up shell startup time - loading of
-# implementation (*.iaccu file) will be done at first accumulator
-# run
+# This file just registers plugin, doesn't provide implementation - this is
+# done to speed up shell startup time - loading of implementation (*.iaccu
+# file) will be done at first accumulator run
 
 #
-# Register generators for command "cp", "mv", "rm", "stat", "chown",
-# "chmod", "mkdir", "rmdir" and more
+# Register generators for command "cp", "mv", "rm", "stat", "chown", "chmod",
+# "mkdir", "rmdir" and more
 #
 
 @zsh-sify-register-plugin "cp"       @__zsh-sify-initial-generator-shellutils @__zsh-sify-generator-shellutils @__zsh-sify-final-generator-shellutils
