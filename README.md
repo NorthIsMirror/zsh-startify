@@ -7,6 +7,8 @@
 - [Installation](#installation)
   - [Any plugin manager](#any-plugin-manager)
   - [Zplugin](#zplugin)
+- [Quick Start](#quick-start)
+  - [Zstyles](#zstyles)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -75,6 +77,8 @@ seconds after the prompt being first displayed.
 `zsh-startify` accumulates data in its own history file. To pre-fill it quickly with a
 few of entries (basing on the regular history) you can run the
 `__from-zhistory-accumulate` command.
+
+## Zstyles
 
 The zstyles used to configure the plugin (add such commands anywhere in the `zshrc`):
 
