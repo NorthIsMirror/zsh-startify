@@ -20,7 +20,8 @@ analogy isn't fully easy to make. `vim-startify` states:
 > show recently used or bookmarked files and persistent sessions.
 
 zsh-startify:
- - shows recently used files,
+ - shows recently used files if used by a shell-utill command, with name of the
+   command(s) on othe right,
  - shows recently used vim files,
  - will show active tmux sessions,
  - will show statistics of most popular aliases in use,
@@ -68,6 +69,21 @@ zplugin load zdharma/zsh-startify
 The first option (A) loads the plugin synchronously, at the time of execution of the
 `zplugin load ...` command. The second option (B) loads in an asynchronous manner, 0
 seconds after the prompt being first displayed.
+
+# Quick Start
+
+`zsh-startify` accumulates data in its own history file. To pre-fill it quickly with a
+few of entries (basing on the regular history) you can run the
+`__from-zhistory-accumulate` command.
+
+The zstyles used to configure the plugin (add such commands anywhere in the `zshrc`):
+
+```zsh
+zstyle ":plugin:zsh-startify:shellutils" size 5  # The size of the recently used file list (default: 5)
+zstyle ":plugin:zsh-startify:vim" size 5         # The size of the recently opened in Vim list (default: 5)
+```
+
+
 
 <!-- vim:tw=87
 -->
