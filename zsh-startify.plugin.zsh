@@ -21,7 +21,7 @@ fi
 typeset -g __fork="no"
 zstyle -t ":plugin:zsh-startify:tracking" fork && __fork="yes"
 
-if [[ "$__fork" ]]; then
+if [[ "$__fork" = "no" ]]; then
     [[ "${+modules}" = 1 && "${modules[zsh/datetime]}" != "loaded" && "${modules[zsh/datetime]}" != "autoloaded" ]] && zmodload zsh/datetime
     [ "${+modules}" = 0 ] && zmodload zsh/datetime
     zmodload -e zsh/datetime || { unset __fork; print "zdharma/zsh-startify (plugin): No module \`zsh/datetime' available, aborting setup."; return 0; }
