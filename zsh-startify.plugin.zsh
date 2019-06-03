@@ -7,6 +7,7 @@
 
 typeset -g ZSHSIFY_DIR="${0:h}"
 typeset -g ZSHSIFY_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh-startify"
+typeset -gA ZSHSIFY
 
 # Support loading without a plugin manager
 if [[ -z "$ZPLG_CUR_PLUGIN" && "${fpath[(r)$ZSHSIFY_DIR]}" != "$ZSHSIFY_DIR" ]]; then
@@ -85,7 +86,7 @@ command mkdir -p "${ZSHSIFY_CACHE_DIR}"
         (( proj_discovery_nparents = proj_discovery_nparents - 1 ))
 
         for ps in "${project_starters[@]}"; do
-            (( (diff=(SECONDS-start_time)*1000) > time_limit )) && echo "${fg_bold[red]}TRACKING ABORTED, TOO SLOW (${diff%.*}ms / $proj_discovery_nparents / $ps )${reset_color}" && break 2
+            (( (diff=(SECONDS-start_time)*1000) > time_limit )) && { (( ZSHSIFY[DEBUG] )) && echo "${fg_bold[red]}TRACKING ABORTED, TOO SLOW (${diff%.*}ms / $proj_discovery_nparents / $ps )${reset_color}"; break 2; }
             result=0
             if [ "${ps/\*/}" != "$ps" ]; then
                 tmp=( $look_in/$~ps(NY1) )
