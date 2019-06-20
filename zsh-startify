@@ -120,8 +120,8 @@ function @zsh-sify_load_implementation() {
 typeset -F SECONDS=0.0
 local -F start_seconds=$SECONDS
 local limit_seconds
-zstyle -s ":accumulator" time_limit limit_seconds || limit_seconds="500"
-[[ "$limit_seconds" != <-> ]] && limit_seconds="500"
+zstyle -s ":plugin:zsh-startify" time_limit limit_seconds || limit_seconds="100"
+[[ "$limit_seconds" != <-> ]] && limit_seconds="100"
 
 # Business logic follows
 local curcontext=":zle:$WIDGET"
