@@ -48,6 +48,8 @@ command mkdir -p "${ZSHSIFY_CACHE_DIR}"
     local -F SECONDS
     local -F start_time="$SECONDS" diff
     local time_limit=150
+    integer new_zsh=0
+    is-at-least 5.0.6 && new_zsh=1
 
     local first second third
     first="${(q)${(q)PWD}}"
@@ -89,7 +91,9 @@ command mkdir -p "${ZSHSIFY_CACHE_DIR}"
             (( (diff=(SECONDS-start_time)*1000) > time_limit )) && { (( ZSHSIFY[DEBUG] )) && echo "${fg_bold[red]}TRACKING ABORTED, TOO SLOW (${diff%.*}ms / $proj_discovery_nparents / $ps )${reset_color}"; break 2; }
             result=0
             if [ "${ps/\*/}" != "$ps" ]; then
-                tmp=( $look_in/$~ps(NY1) )
+                (( new_zsh )) && \
+                    tmp=( $look_in/$~ps(NY1) ) || \
+                    tmp=( $look_in/$~ps(N[1]) )
                 [ "${#tmp}" != "0" ] && result=1
             else
                 [ -e "$look_in/$ps" ] && result=1
@@ -158,7 +162,7 @@ function @zsh-sify-register-plugin() {
     ZSHSIFY_PLUGS_FINAL_TEXT_GENERATORS[$program]="${ZSHSIFY_PLUGS_FINAL_TEXT_GENERATORS[$program]# }"
 }
 
-autoload -Uz add-zsh-hook
+autoload -Uz add-zsh-hook is-at-least
 add-zsh-hook preexec @zsh-startify-tracking-hook
 
 unfunction __from-zhistory-accumulate 2>/dev/null
