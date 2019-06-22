@@ -234,7 +234,7 @@ done
 
 local -F 3 ZSHSIFY_GENERATION_TIME="$(( SECONDS - start_seconds ))"
 
-print -lr -- "$text" "Generated in $ZSHSIFY_GENERATION_TIME"
+print -lr -- "" "$text" "Generated in $ZSHSIFY_GENERATION_TIME"
 
 zle && zle redisplay
 
