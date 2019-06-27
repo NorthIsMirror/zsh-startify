@@ -142,7 +142,7 @@ ZSHSIFY_OUTPUT_DOCUMENT_SECTIONS=()
 
 @zsh-sify-run-initial-generators
 
-input_arr=( "${(f)$(<"${input_db_path}")}" )
+{ input_arr=( "${(f)$(<"${input_db_path}")}" ) } 2>/dev/null
 input_arr=( "${(Oa)input_arr[@]}" )
 
 # TODO: detect active path modification inside one command set
