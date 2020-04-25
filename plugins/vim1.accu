@@ -19,5 +19,6 @@
 @zsh-sify-register-plugin "xxd"     @__zsh-sify-initial-generator-vim1 @__zsh-sify-generator-vim1 @__zsh-sify-final-generator-vim1
 @zsh-sify-register-plugin "mvim"    @__zsh-sify-initial-generator-vim1 @__zsh-sify-generator-vim1 @__zsh-sify-final-generator-vim1
 @zsh-sify-register-plugin "view"    @__zsh-sify-initial-generator-vim1 @__zsh-sify-generator-vim1 @__zsh-sify-final-generator-vim1
+@zsh-sify-register-plugin "nvim"    @__zsh-sify-initial-generator-vim1 @__zsh-sify-generator-vim1 @__zsh-sify-final-generator-vim1
 
 # vim: ft=zsh
